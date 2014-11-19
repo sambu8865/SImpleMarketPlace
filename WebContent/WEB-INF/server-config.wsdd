@@ -1,0 +1,106 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\Sambugopan\eclipsejeeluna\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SImpleMarketPlace\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="Service" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="places" qname="ns1:places" returnQName="ns1:placesReturn" returnType="ns1:Place" soapAction="" xmlns:ns1="http://Connection" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:search" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns2:parameter qname="ns1:placename" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns2:operation>
+  <ns1:operation name="signUp" qname="ns2:signUp" returnQName="ns2:signUpReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:fullname" type="xsd:string"/>
+   <ns1:parameter qname="ns2:email" type="xsd:string"/>
+   <ns1:parameter qname="ns2:phonenumber" type="xsd:string"/>
+   <ns1:parameter qname="ns2:pwd" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="addPlace" qname="ns3:addPlace" returnQName="ns3:addPlaceReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:place" type="ns3:Add"/>
+  </ns1:operation>
+  <ns1:operation name="lastLogin" qname="ns4:lastLogin" returnQName="ns4:lastLoginReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:userid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="reviewPlace" qname="ns5:reviewPlace" returnQName="ns5:reviewPlaceReturn" returnType="xsd:int" soapAction="" xmlns:ns5="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:review1" type="ns5:Review"/>
+  </ns1:operation>
+  <ns1:operation name="deleteReview" qname="ns6:deleteReview" returnQName="ns6:deleteReviewReturn" returnType="xsd:int" soapAction="" xmlns:ns6="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:reviewid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="userplaces" qname="ns7:userplaces" returnQName="ns7:userplacesReturn" returnType="ns7:Place" soapAction="" xmlns:ns7="http://Connection">
+   <ns1:parameter qname="ns7:userid" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="reviewgen" qname="ns8:reviewgen" returnQName="ns8:reviewgenReturn" returnType="ns8:Review" soapAction="" xmlns:ns8="http://Connection">
+   <ns1:parameter qname="ns8:placeid" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getusername" qname="ns9:getusername" returnQName="ns9:getusernameReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:userid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="signIn" qname="ns10:signIn" returnQName="ns10:signInReturn" returnType="xsd:int" soapAction="" xmlns:ns10="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:username" type="xsd:string"/>
+   <ns1:parameter qname="ns10:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="reviews" qname="ns11:reviews" returnQName="ns11:reviewsReturn" returnType="ns11:Review" soapAction="" xmlns:ns11="http://Connection">
+   <ns1:parameter qname="ns11:userid" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="deletePlace" qname="ns12:deletePlace" returnQName="ns12:deletePlaceReturn" returnType="xsd:int" soapAction="" xmlns:ns12="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:placeid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="lastLogin places reviews getusername signIn deletePlace reviewPlace addPlace reviewgen signUp userplaces deleteReview"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Service"/>
+  <ns1:parameter name="className" value="Connection.Service"/>
+  <ns1:parameter name="wsdlServicePort" value="Service"/>
+  <ns1:parameter name="schemaQualified" value="http://Connection"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Connection"/>
+  <ns1:parameter name="wsdlServiceElement" value="ServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns13:Place" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.Place" xmlns:ns13="http://Connection"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:Review" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.Review" xmlns:ns14="http://Connection"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:Add" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.Add" xmlns:ns15="http://Connection"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
